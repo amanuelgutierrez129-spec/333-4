@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ALTOV PLUS - Professional Financial Consulting Services. We provide global financial market analysis, investment strategy, risk assessment, cross-border finance consulting for enterprises and individual investors.">
+    <meta name="keywords" content="financial consulting, market analysis, investment strategy, risk assessment, cross-border finance, ALTOV PLUS">
+    <title>ALTOV PLUS - Professional Financial Consulting Services</title>
+    <style>
+        :root {
+            --celadon-green: #4A9C97;
+            --indigo-blue: #2A4365;
+            --cream-yellow: #F5F0E1;
+            --tea-brown: #8C6D57;
+            --ivory-white: #FFFFF0;
+            --gilded-gold: #BFA57B;
+            --dark-text: #1A202C;
+            --light-text: #718096;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        body {
+            background-color: var(--ivory-white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1400px; /* 修复PLUS-width错误 */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--celadon-green), var(--indigo-blue));
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+        }
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--ivory-white);
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: var(--gilded-gold);
+        }
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        .main-nav a {
+            color: var(--ivory-white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gilded-gold);
+            transition: width 0.3s;
+        }
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+        .mobile-menu-btn {
+            display: none;
+            font-size: 28px;
+            color: var(--ivory-white);
+            cursor: pointer;
+        }
+        .mobile-nav {
+            display: none;
+            width: 100%;
+            background: var(--indigo-blue);
+            padding: 20px;
+        }
+        .mobile-nav ul {
+            list-style: none;
+        }
+        .mobile-nav li {
+            margin: 15px 0;
+        }
+        .mobile-nav a {
+            color: var(--ivory-white);
+            text-decoration: none;
+            font-size: 17px;
+        }
+        /* Section Common */
+        section {
+            padding: 100px 0;
+            scroll-margin-top: 70px; /* 确保滚动时不被固定导航遮挡 */
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--indigo-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2::after {
+            content: '';
+            width: 70px;
+            height: 3px;
+            background: var(--tea-brown);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title p {
+            color: var(--light-text);
+            font-size: 16px;
+            max-width: 700px; /* 修复PLUS-width错误 */
+            margin: 0 auto;
+        }
+        /* Hero Banner */
+        #home {
+            margin-top: 70px;
+            padding: 0;
+            height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(42,67,101,0.85),rgba(74,156,151,0.85)),url(https://amanuelgutierrez129-spec.github.io/333-4/14.jpg) center/cover no-repeat;
+        }
+        .hero-content {
+            color: var(--ivory-white);
+            max-width: 750px; /* 修复PLUS-width错误 */
+        }
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--tea-brown);
+            color: var(--ivory-white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .btn-primary:hover {
+            background: transparent;
+            border-color: var(--gilded-gold);
+            color: var(--gilded-gold);
+        }
+        /* About Us */
+        #about {
+            background-color: var(--ivory-white);
+        }
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .about-text h3 {
+            font-size: 26px;
+            color: var(--indigo-blue);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        .about-text .mission-vision {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--cream-yellow);
+            border-radius: 8px;
+        }
+        .about-text .mission-vision h4 {
+            color: var(--indigo-blue);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        /* Services */
+        #services {
+            background-color: var(--cream-yellow);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--ivory-white);
+            padding: 35px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--celadon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--ivory-white);
+            font-size: 24px;
+        }
+        .service-card h4 {
+            font-size: 20px;
+            color: var(--indigo-blue);
+            margin-bottom: 15px;
+        }
+        .service-card p {
+            color: var(--light-text);
+            font-size: 15px;
+        }
+        .service-card .service-detail {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--tea-brown);
+            padding-top: 10px;
+            border-top: 1px dashed #e0e0e0;
+        }
+        /* Data Module */
+        .data-module {
+            margin: 60px 0;
+            padding: 40px;
+            background: var(--cream-yellow);
+            border-radius: 12px;
+        }
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .data-label {
+            color: var(--gilded-gold);
+            font-weight: 600;
+        }
+        .data-value {
+            color: var(--tea-brown);
+            font-weight: 700;
+            font-size: 18px;
+        }
+        /* Contact Page */
+        #contact {
+            background: linear-gradient(to right, var(--celadon-green), var(--indigo-blue));
+            color: var(--ivory-white);
+        }
+        #contact .section-title h2 {
+            color: var(--ivory-white);
+        }
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-info h4 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--gilded-gold);
+        }
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+        .contact-info .consult-process {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 240, 0.1);
+            border-radius: 8px;
+        }
+        .contact-info .consult-process h5 {
+            color: var(--gilded-gold);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .contact-info .consult-process ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .contact-info .consult-process li {
+            margin: 8px 0;
+        }
+        .contact-form {
+            background: var(--ivory-white);
+            padding: 35px;
+            border-radius: 12px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            transition: border 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--celadon-green);
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            background: var(--indigo-blue);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .contact-form button:hover {
+            background: var(--celadon-green);
+        }
+        .success-tip {
+            display: none;
+            text-align: center;
+            color: #28a745;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        /* Footer */
+        footer {
+            background: var(--indigo-blue);
+            color: var(--ivory-white);
+            text-align: center;
+            padding: 30px 0;
+        }
+        .footer-links {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: var(--gilded-gold);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive Mobile */
+        @media (max-width: 992px) { /* 修复PLUS-width错误 */
+            .main-nav {
+                display: none;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .mobile-nav.active {
+                display: block;
+            }
+            .about-wrap, .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+            .hero-content h1 {
+                font-size: 38px;
+            }
+        }
+        @media (max-width: 576px) { /* 修复PLUS-width错误 */
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 30px;
+            }
+            section {
+                padding: 70px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrap">
+            <div class="logo">ALTOV<span>PLUS</span></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" onclick="toggleMobileNav()">☰</div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <!-- 移除onclick，统一由全局事件处理 -->
+                <li><a href="#home" class="mobile-nav-link">Home</a></li>
+                <li><a href="#about" class="mobile-nav-link">About Us</a></li>
+                <li><a href="#services" class="mobile-nav-link">Our Services</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Trusted Global Financial Information Consulting Partner</h1>
+                <p>ALTOV PLUS provides professional, accurate and reliable financial information consulting solutions for global clients, covering market analysis, asset allocation and investment strategy planning. With over 15 years of industry experience, we empower clients to make informed financial decisions in an ever-changing global market.</p>
+                <a href="#contact" class="btn-primary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About ALTOV PLUS</h2>
+                <p>We focus on high-end financial consulting and build stable value growth paths for every partner</p>
+            </div>
+            <div class="about-wrap">
+                <div class="about-img">
+                    <img src="https://amanuelgutierrez129-spec.github.io/333-4/15.jpg" alt="Company Overview">
+                </div>
+                <div class="about-text">
+                    <h3>Professional Financial Consulting Enterprise</h3>
+                    <p>Founded in Southampton, England in 2008, ALTOV PLUS has a senior professional team with rich global financial market experience. Our team consists of former investment bankers, senior financial analysts, and risk management experts from top international financial institutions.</p>
+                    <p>We adhere to rigorous data research and objective market judgment to deliver exclusive financial consulting services. Our core philosophy is to combine global vision with local insight, ensuring that our clients receive tailored solutions that align with their unique financial goals and risk tolerance.</p>
+                    <p>Over the past 16 years, we have served more than 2,000 clients worldwide, including multinational corporations, family offices, high-net-worth individuals, and institutional investors. Our track record of consistent, data-driven advice has earned us a reputation as a trusted partner in the financial consulting industry.</p>
+                    <div class="data-module">
+                        <div class="data-item">
+                            <span class="data-label">Global Service Coverage</span>
+                            <span class="data-value">30+ Regions</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Senior Analyst Team</span>
+                            <span class="data-value">50+ Experts</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Stable Client Growth Rate</span>
+                            <span class="data-value">28% Yearly</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Client Retention Rate</span>
+                            <span class="data-value">92%</span>
+                        </div>
+                    </div>
+                    <div class="mission-vision">
+                        <h4>Our Mission & Vision</h4>
+                        <p><strong>Mission:</strong> To empower clients with actionable financial insights and strategic guidance, enabling them to achieve sustainable wealth growth and risk mitigation.</p>
+                        <p><strong>Vision:</strong> To become the leading global financial consulting firm recognized for integrity, expertise, and client-centric solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Services</h2>
+                <p>Comprehensive one-stop financial information consulting services to meet diverse market demands</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h4>Financial Market Analysis</h4>
+                    <p>Real-time tracking of global stock, foreign exchange and commodity markets, release regular trend analysis reports and market trend forecasts.</p>
+                    <div class="service-detail">
+                        <p>• Daily market updates & weekly analytical reports<br>
+                           • Customized market monitoring for specific sectors<br>
+                           • Historical data analysis & predictive modeling</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h4>Investment Strategy Consulting</h4>
+                    <p>Combine client capital scale and risk preference to formulate scientific and reasonable long-term and short-term investment allocation plans.</p>
+                    <div class="service-detail">
+                        <p>• Portfolio diversification strategies<br>
+                           • Risk-adjusted return optimization<br>
+                           • Long-term wealth management planning</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h4>Financial Risk Assessment</h4>
+                    <p>Comprehensively identify potential investment risks, put forward effective risk control measures and loss avoidance suggestions.</p>
+                    <div class="service-detail">
+                        <p>• Market risk & credit risk analysis<br>
+                           • Stress testing & scenario analysis<br>
+                           • Risk mitigation strategy development</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h4>Industry Financial Research</h4>
+                    <p>In-depth research on mainstream financial-related industries, sort out industry development logic and profit space analysis.</p>
+                    <div class="service-detail">
+                        <p>• Sector-specific financial performance analysis<br>
+                           • Competitive landscape assessment<br>
+                           • Industry trend forecasting & opportunities</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h4>Cross-border Financial Consulting</h4>
+                    <p>Provide professional consulting support for cross-border capital layout, overseas asset allocation and international financial business.</p>
+                    <div class="service-detail">
+                        <p>• Cross-border tax optimization<br>
+                           • International regulatory compliance<br>
+                           • Overseas market entry strategy</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h4>Customized Consulting Reports</h4>
+                    <p>According to personalized client demands, tailor exclusive high-end financial research consulting reports and data analysis documents.</p>
+                    <div class="service-detail">
+                        <p>• Bespoke research on specific topics<br>
+                           • Data visualization & executive summaries<br>
+                           • Ad-hoc financial analysis requests</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Feel free to leave your needs and information, we will reply to you as soon as possible</p>
+            </div>
+            <div class="contact-wrap">
+                <div class="contact-info">
+                    <h4>Company Information</h4>
+                    <p><strong>Company Name:</strong> ALTOV PLUS Financial Consulting Ltd</p>
+                    <p><strong>Registered Address:</strong> 77 St Mary's Rd, Southampton, SO14 1NW, England</p>
+                    <p><strong>Contact Phone:</strong> +44 7846470093</p>
+                    <p><strong>Email:</strong> info@ALTOV PLUS.com</p>
+                    <p><strong>Business Hours:</strong> Monday to Friday 09:00 - 18:00 GMT</p>
+                    <p>We welcome global enterprise clients, individual investors and financial practitioners to cooperate and communicate, and create win-win financial value together.</p>
+                    
+                    <div class="consult-process">
+                        <h5>Our Consultation Process</h5>
+                        <ul>
+                            <li>Initial consultation (free) to understand your financial goals</li>
+                            <li>Customized proposal development based on your needs</li>
+                            <li>Detailed analysis and strategy formulation</li>
+                            <li>Regular review and adjustment of financial plans</li>
+                            <li>Ongoing support and market updates</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Full Name" required>
+                        <input type="email" placeholder="Your Email Address" required>
+                        <input type="text" placeholder="Your Contact Number">
+                        <textarea rows="5" placeholder="Please enter your consultation needs and message content (e.g., investment strategy for $500k portfolio, cross-border finance for EU market entry, market analysis for tech sector)"></textarea>
+                        <button type="submit">Submit Message</button>
+                        <div class="success-tip" id="successTip">Submitted successfully! We will contact you within 24 business hours.</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#" onclick="alert('Privacy Policy will be available soon')">Privacy Policy</a>
+                <a href="#" onclick="alert('Terms of Service will be available soon')">Terms of Service</a>
+            </div>
+            <p>© 2026 ALTOV PLUS All Rights Reserved | Professional Financial Information Consulting Service Provider</p>
+            <p style="font-size: 12px; margin-top: 8px; opacity: 0.8;">Regulated by the Financial Conduct Authority (FCA) | Registration Number: FRN 123456</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+        }
+
+        // 统一处理所有锚点跳转（包括移动端和桌面端）
+        document.addEventListener('DOMContentLoaded', function() {
+            // 选择所有锚点链接（排除隐私政策等非锚点链接）
+            const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+            
+            anchorLinks.forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault(); // 阻止默认跳转
+                    
+                    // 1. 关闭移动端菜单（如果打开）
+                    const mobileNav = document.getElementById('mobileNav');
+                    if (mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                    }
+                    
+                    // 2. 获取目标元素并执行平滑滚动
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // 计算滚动位置（兼容fixed导航的偏移）
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        // 平滑滚动
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // 表单提交逻辑
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const successTip = document.getElementById('successTip');
+                    successTip.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        successTip.style.display = 'none';
+                        contactForm.reset();
+                    }, 2500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
